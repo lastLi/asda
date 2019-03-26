@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <!--<parent>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-parent</artifactId>-->
-        <!--<version>2.1.3.RELEASE</version>-->
-        <!--<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
-    <!--</parent>-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
     <packaging>jar</packaging>
     <groupId>com.example</groupId>
     <artifactId>demo</artifactId>
@@ -20,131 +20,131 @@
     </properties>
 
     <dependencies>
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-web</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-test</artifactId>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-    <!--<repositories>-->
-        <!--&lt;!&ndash;&lt;!&ndash;spring的仓库&ndash;&gt;&ndash;&gt;-->
-        <!--&lt;!&ndash;<repository>&ndash;&gt;-->
-            <!--&lt;!&ndash;<id>spring-snapshots</id>&ndash;&gt;-->
-            <!--&lt;!&ndash;<name>Spring Snapshots</name>&ndash;&gt;-->
-            <!--&lt;!&ndash;<url>https://repo.spring.io/snapshot</url>&ndash;&gt;-->
-            <!--&lt;!&ndash;<snapshots>&ndash;&gt;-->
-                <!--&lt;!&ndash;<enabled>true</enabled>&ndash;&gt;-->
-            <!--&lt;!&ndash;</snapshots>&ndash;&gt;-->
-        <!--&lt;!&ndash;</repository>&ndash;&gt;-->
-        <!--&lt;!&ndash;<repository>&ndash;&gt;-->
-            <!--&lt;!&ndash;<id>spring-milestones</id>&ndash;&gt;-->
-            <!--&lt;!&ndash;<name>Spring Milestones</name>&ndash;&gt;-->
-            <!--&lt;!&ndash;<url>https://repo.spring.io/milestone</url>&ndash;&gt;-->
-            <!--&lt;!&ndash;<snapshots>&ndash;&gt;-->
-                <!--&lt;!&ndash;<enabled>false</enabled>&ndash;&gt;-->
-            <!--&lt;!&ndash;</snapshots>&ndash;&gt;-->
-        <!--&lt;!&ndash;</repository>&ndash;&gt;-->
-    <!--</repositories>-->
+    <repositories>
+        <!--spring的仓库-->
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
-    <!--<build>-->
-        <!--<plugins>-->
-            <!--&lt;!&ndash;<plugin>&ndash;&gt;-->
-                <!--&lt;!&ndash;<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
-                <!--&lt;!&ndash;<artifactId>spring-boot-maven-plugin</artifactId>&ndash;&gt;-->
-            <!--&lt;!&ndash;</plugin>&ndash;&gt;-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
 
-            <!--&lt;!&ndash;使用docker-maven-plugin插件&ndash;&gt;-->
-            <!--&lt;!&ndash;<plugin>-->
-                <!--<groupId>com.spotify</groupId>-->
-                <!--<artifactId>docker-maven-plugin</artifactId>-->
-                <!--<version>1.0.0</version>-->
-                <!--&lt;!&ndash;将插件绑定在某个phase执行&ndash;&gt;-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>build-image</id>-->
-                        <!--&lt;!&ndash;将插件绑定在package这个phase上。也就是说，用户只需执行mvn package ，就会自动执行mvn docker:build&ndash;&gt;-->
-                        <!--<phase>package</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>build</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                    <!--<execution>-->
-                        <!--<id>image-tag</id>-->
-                        <!--<phase>install</phase>-->
-                        <!--<goals>-->
-                            <!--&lt;!&ndash;tag命令，相当于docker的tag命令&ndash;&gt;-->
-                            <!--<goal>tag</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--&lt;!&ndash;镜像名&ndash;&gt;-->
-                            <!--<image>hsz1993/${project.artifactId}</image>-->
-                            <!--&lt;!&ndash;打的标签名,这个标签名的前面必须带ip和端口号,不然默认推送的是Docker.io这里,如果没有配置好的会报错&ndash;&gt;-->
-                            <!--<newName>192.168.81.128:5000/hsz1993/${project.artifactId}</newName>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                    <!--<execution>-->
-                        <!--<id>package-push</id>-->
-                        <!--<phase>install</phase>-->
-                        <!--<goals>-->
-                            <!--&lt;!&ndash;相当于docker的push命令&ndash;&gt;-->
-                            <!--<goal>push</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--&lt;!&ndash;要push的镜像名,就是标记过的&ndash;&gt;-->
-                            <!--<imageName>192.168.81.128:5000/hsz1993/${project.artifactId}</imageName>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
+            <!--使用docker-maven-plugin插件-->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <!--将插件绑定在某个phase执行-->
+                <executions>
+                    <execution>
+                        <id>build-image</id>
+                        <!--将插件绑定在package这个phase上。也就是说，用户只需执行mvn package ，就会自动执行mvn docker:build-->
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>image-tag</id>
+                        <phase>install</phase>
+                        <goals>
+                            <!--tag命令，相当于docker的tag命令-->
+                            <goal>tag</goal>
+                        </goals>
+                        <configuration>
+                            <!--镜像名-->
+                            <image>hsz1993/${project.artifactId}</image>
+                            <!--打的标签名,这个标签名的前面必须带ip和端口号,不然默认推送的是Docker.io这里,如果没有配置好的会报错-->
+                            <newName>192.168.81.128:5000/hsz1993/${project.artifactId}</newName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>package-push</id>
+                        <phase>install</phase>
+                        <goals>
+                            <!--相当于docker的push命令-->
+                            <goal>push</goal>
+                        </goals>
+                        <configuration>
+                            <!--要push的镜像名,就是标记过的-->
+                            <imageName>192.168.81.128:5000/hsz1993/${project.artifactId}</imageName>
+                        </configuration>
+                    </execution>
 
-                <!--</executions>-->
+                </executions>
 
-                <!--<configuration>-->
-                    <!--&lt;!&ndash;覆盖相同的镜像&ndash;&gt;-->
-                    <!--<forceTags>true</forceTags>-->
-                    <!--&lt;!&ndash;指定生成的镜像名,前面的那个名字你随便改,后面的引用,不能动&ndash;&gt;-->
-                    <!--<imageName>hsz1993/${project.artifactId}</imageName>-->
-                    <!--&lt;!&ndash;指定标签,也就是版本号,可以自定义&ndash;&gt;-->
-                    <!--<imageTags>-->
-                        <!--<imageTag>latest</imageTag>-->
-                    <!--</imageTags>-->
-                    <!--&lt;!&ndash; 指定 Dockerfile 路径&ndash;&gt;-->
-                    <!--<dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>-->
-                    <!--&lt;!&ndash;指定远程 docker api地址 也就是服务器ip+docker的端口号&ndash;&gt;-->
-                    <!--<dockerHost>http://192.168.81.128:2375</dockerHost>-->
-                    <!--&lt;!&ndash; 这里是复制 jar 包到 docker 容器指定目录配置 &ndash;&gt;-->
-                    <!--<resources>-->
-                        <!--<resource>-->
-                            <!--<targetPath>/</targetPath>-->
-                            <!--&lt;!&ndash;jar 包所在的路径  此处配置的 即对应 target 目录&ndash;&gt;-->
-                            <!--<directory>${project.build.directory}</directory>-->
-                            <!--&lt;!&ndash; 需要包含的 jar包 ，这里对应的是 Dockerfile中添加的文件名　&ndash;&gt;-->
-                            <!--<include>${project.build.finalName}.jar</include>-->
-                        <!--</resource>-->
-                    <!--</resources>-->
-                <!--</configuration>-->
-            <!--</plugin>&ndash;&gt;-->
-        <!--</plugins>-->
-    <!--</build>-->
-    <!--<pluginRepositories>-->
-        <!--<pluginRepository>-->
-            <!--<id>spring-snapshots</id>-->
-            <!--<name>Spring Snapshots</name>-->
-            <!--<url>https://repo.spring.io/snapshot</url>-->
-            <!--<snapshots>-->
-                <!--<enabled>true</enabled>-->
-            <!--</snapshots>-->
-        <!--</pluginRepository>-->
-        <!--<pluginRepository>-->
-            <!--<id>spring-milestones</id>-->
-            <!--<name>Spring Milestones</name>-->
-            <!--<url>https://repo.spring.io/milestone</url>-->
-            <!--<snapshots>-->
-                <!--<enabled>false</enabled>-->
-            <!--</snapshots>-->
-        <!--</pluginRepository>-->
-    <!--</pluginRepositories>-->
+                <configuration>
+                    <!--覆盖相同的镜像-->
+                    <forceTags>true</forceTags>
+                    <!--指定生成的镜像名,前面的那个名字你随便改,后面的引用,不能动-->
+                    <imageName>hsz1993/${project.artifactId}</imageName>
+                    <!--指定标签,也就是版本号,可以自定义-->
+                    <imageTags>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
+                    <!-- 指定 Dockerfile 路径-->
+                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                    <!--指定远程 docker api地址 也就是服务器ip+docker的端口号-->
+                    <dockerHost>http://192.168.81.128:2375</dockerHost>
+                    <!-- 这里是复制 jar 包到 docker 容器指定目录配置 -->
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <!--jar 包所在的路径  此处配置的 即对应 target 目录-->
+                            <directory>${project.build.directory}</directory>
+                            <!-- 需要包含的 jar包 ，这里对应的是 Dockerfile中添加的文件名　-->
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
