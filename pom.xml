@@ -75,7 +75,7 @@
                     </execution>
                     <execution>
                         <id>image-tag</id>
-                        <phase>install</phase>
+                        <phase>package</phase>
                         <goals>
                             <!--tag命令，相当于docker的tag命令-->
                             <goal>tag</goal>
@@ -89,7 +89,7 @@
                     </execution>
                     <execution>
                         <id>package-push</id>
-                        <phase>install</phase>
+                        <phase>package</phase>
                         <goals>
                             <!--相当于docker的push命令-->
                             <goal>push</goal>
